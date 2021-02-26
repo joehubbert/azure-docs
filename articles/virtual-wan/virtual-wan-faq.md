@@ -6,7 +6,7 @@ author: cherylmc
 
 ms.service: virtual-wan
 ms.topic: troubleshooting
-ms.date: 10/17/2019
+ms.date: 02/05/2021
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to read more details about Virtual WAN in a FAQ format.
 ---

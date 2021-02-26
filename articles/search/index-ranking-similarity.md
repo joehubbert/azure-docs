@@ -28,7 +28,7 @@ While conceptually similar to the older Classic Similarity algorithm, BM25 takes
 
 When you create a new index, you can set a **similarity** property to specify the algorithm. You can use the `api-version=2019-05-06-Preview`, as shown below, or `api-version=2020-06-30`.
 
-```
+```http
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=2019-05-06-Preview
 ```
 
@@ -101,7 +101,7 @@ PUT https://[search service name].search.windows.net/indexes/[index name]?api-ve
 
 ## See also  
 
-+ [REST API Reference](/rest/api/searchservice/)   
-+ [Add scoring profiles to your index](index-add-scoring-profiles.md)    
-+ [Create Index API](/rest/api/searchservice/create-index)   
-+ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search?view=azure-dotnet)
++ [REST API Reference](/rest/api/searchservice/)
++ [Add scoring profiles to your index](index-add-scoring-profiles.md)
++ [Create Index API](/rest/api/searchservice/create-index)
++ [Azure Cognitive Search .NET SDK](/dotnet/api/overview/azure/search)

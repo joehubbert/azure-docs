@@ -1,5 +1,5 @@
 ---
-title: How to use the Video.js player with Azure Media Services
+title: Use the Video.js player with Azure Media Services
 description: This article explains how to use the HTML video object and JavaScript with Azure Media Services
 services: media-services
 documentationcenter: ''
@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.custom: devx-track-javascript
+ms.custom: devx-track-js
 ---
 
 # How to use the Video.js player with Azure Media Services

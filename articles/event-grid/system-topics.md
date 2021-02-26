@@ -2,7 +2,7 @@
 title: System topics in Azure Event Grid
 description: Describes system topics in Azure Event Grid. 
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 09/24/2020
 ---
 
 # System topics in Azure Event Grid
@@ -17,6 +17,7 @@ Here is the current list of Azure services that support creation of system topic
 - [Azure App Configuration](event-schema-app-configuration.md)
 - [Azure App Service](event-schema-app-service.md)
 - [Azure Blob Storage](event-schema-blob-storage.md)
+- [Azure Communication Services](event-schema-communication-services.md) 
 - [Azure Container Registry](event-schema-container-registry.md)
 - [Azure Event Hubs](event-schema-event-hubs.md)
 - [Azure IoT Hub](event-schema-iot-hub.md)
@@ -28,6 +29,7 @@ Here is the current list of Azure services that support creation of system topic
 - [Azure Service Bus](event-schema-service-bus.md)
 - [Azure SignalR](event-schema-azure-signalr.md)
 - [Azure subscriptions](event-schema-subscriptions.md)
+- [Azure Cache for Redis](event-schema-azure-cache.md)
 
 ## System topics as Azure resources
 In the past, a system topic was implicit and wasn't exposed for simplicity. System topics are now visible as Azure resources and provide the following capabilities:

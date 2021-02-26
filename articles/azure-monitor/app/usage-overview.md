@@ -34,7 +34,7 @@ The best experience is obtained by installing Application Insights both in your 
 
     To learn more advanced configurations for monitoring websites, check out the [JavaScript SDK reference article](./javascript.md).
 
-3. **Mobile app code:** Use the App Center SDK to collect events from your app, then send copies of these events to Application Insights for analysis by [following this guide](../learn/mobile-center-quickstart.md).
+3. **Mobile app code:** Use the App Center SDK to collect events from your app, then send copies of these events to Application Insights for analysis by [following this guide](../app/mobile-center-quickstart.md).
 
 4. **Get telemetry:** Run your project in debug mode for a few minutes, and then look for results in the Overview blade in Application Insights.
 
@@ -50,7 +50,7 @@ Find out when people use your app, what pages they're most interested in, where 
 
 The Users and Sessions reports filter your data by pages or custom events, and segment them by properties such as location, environment, and page. You can also add your own filters.
 
-![Users](./media/usage-overview/users.png)  
+![Screen capture shows the Users Overview page for a fictitious company.](./media/usage-overview/users.png)  
 
 Insights on the right point out interesting patterns in the set of data.  
 
@@ -67,7 +67,7 @@ Retention helps you understand how often your users return to use their app, bas
 - Form hypotheses based on real user data 
 - Determine whether retention is a problem in your product 
 
-![Retention](./media/usage-overview/retention.png) 
+![Screen capture shows the Retention Overview page which displays information about how often users return to use their app.](./media/usage-overview/retention.png) 
 
 The retention controls on top allow you to define specific events and time range to calculate retention. The graph in the middle gives a visual representation of the overall retention percentage by the time range specified. The graph on the bottom represents individual retention in a given time period. This level of detail allows you to understand what your users are doing and what might affect returning users on a more detailed granularity.  
 
@@ -75,7 +75,9 @@ The retention controls on top allow you to define specific events and time range
 
 ## Custom business events
 
-To get a clear understanding of what users do with your app, it's useful to insert lines of code to log custom events. These events can track anything from detailed user actions such as clicking specific buttons, to more significant business events such as making a purchase or winning a game. 
+To get a clear understanding of what users do with your app, it's useful to insert lines of code to log custom events. These events can track anything from detailed user actions such as clicking specific buttons, to more significant business events such as making a purchase or winning a game.
+
+You can also use the [Click Analytics Auto-collection Plugin](javascript-click-analytics-plugin.md) to collect custom events.
 
 Although in some cases, page views can represent useful events, it isn't true in general. A user can open a product page without buying the product. 
 
@@ -106,7 +108,7 @@ Learn more about [custom events](./api-custom-events-metrics.md#trackevent) and 
 ### Slice and dice events
 
 In the Users, Sessions, and Events tools, you can slice and dice custom events by user, event name, and properties.
-![Users](./media/usage-overview/users.png)  
+![Screen capture shows the Users Overview page for a fictitious company.](./media/usage-overview/users.png)  
   
 ## Design the telemetry with the app
 
@@ -173,6 +175,6 @@ All new TelemetryClients automatically add the property value you specify. Indiv
    - [Funnels](usage-funnels.md)
    - [Retention](usage-retention.md)
    - [User Flows](usage-flows.md)
-   - [Workbooks](../platform/workbooks-overview.md)
+   - [Workbooks](../visualize/workbooks-overview.md)
    - [Add user context](usage-send-user-context.md)
 

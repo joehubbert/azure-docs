@@ -4,19 +4,19 @@ description: Azure Security Benchmark V2 Network Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 
 ---
 
-# Security Control: Network Security
+# Security Control V2: Network Security
 
 Network Security covers controls to secure and protect Azure networks. This includes securing virtual networks, establishing private connections, preventing and mitigating external attacks, and securing DNS.
 
 ## NS-1: Implement security for internal traffic
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-1 | 9.2, 9.4, 14.1, 14.2, 14.3 | AC-4, CA-3, SC-7 |
 
@@ -26,15 +26,19 @@ Based on your applications and enterprise segmentation strategy, restrict or all
 
 Use Azure Security Center Adaptive Network Hardening to recommend network security group configurations that limit ports and source IPs based with the reference to external network traffic rules.
 
+Use Azure Sentinel to discover the use of legacy insecure protocols such as SSL/TLSv1, SMBv1, LM/NTLMv1, wDigest, Unsigned LDAP Binds, and weak ciphers in Kerberos.
+
 - [How to create a network security group with security rules](../../virtual-network/tutorial-filter-network-traffic.md)
 
 - [How to deploy and configure Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
 - [Adaptive Network Hardening in Azure Security Center](../../security-center/security-center-adaptive-network-hardening.md)
 
+- [Azure Sentinel insecure protocols workbook](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
+
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -44,13 +48,13 @@ Use Azure Security Center Adaptive Network Hardening to recommend network securi
 
 ## NS-2: Connect private networks together
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-2 | N/A | CA-3, AC-17, MA-4 |
 
 Use Azure ExpressRoute or Azure virtual private network (VPN)  to create private connections between Azure datacenters and on-premises infrastructure in a colocation environment. ExpressRoute connections do not go over the public internet , and they offer more reliability, faster speeds, and lower latencies than typical internet connections. For point-to-site VPN and site-to-site VPN, you can connect on-premises devices or networks to a virtual network using any combination of these VPN options and Azure ExpressRoute.
 
-To connect two or more virtual networks in Azure together, use virtual network peering. Network traffic between peered virtual networks is private and is kept on the Azure backbone network. 
+To connect two or more virtual networks in Azure together, use virtual network peering or Private Link. Network traffic between peered virtual networks is private and is kept on the Azure backbone network. 
 
 - [What are the ExpressRoute connectivity models](../../expressroute/expressroute-connectivity-models.md) 
 
@@ -58,9 +62,11 @@ To connect two or more virtual networks in Azure together, use virtual network p
 
 - [Virtual network peering](../../virtual-network/virtual-network-peering-overview.md)
 
+- [Azure Private Link](../../private-link/private-link-service-overview.md)
+
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -70,7 +76,7 @@ To connect two or more virtual networks in Azure together, use virtual network p
 
 ## NS-3: Establish private network access to Azure services
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-3 | 14.1 | AC-4, CA-3, SC-7 |
 
@@ -84,7 +90,7 @@ Private access is an additional defense in depth measure in addition to authenti
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -94,7 +100,7 @@ Private access is an additional defense in depth measure in addition to authenti
 
 ## NS-4: Protect applications and services from external network attacks
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-4 | 9.5, 12.3, 12.9 | SC-5, SC-7 |
 
@@ -104,22 +110,27 @@ Protect Azure resources against attacks from external networks, including distri
 -	Use Web Application Firewall (WAF) capabilities in Azure Application Gateway, Azure Front Door, and Azure Content Delivery Network (CDN) to protect your applications, services, and APIs against application layer attacks. 
 
 -	Protect your assets against DDoS attacks by enabling DDoS standard protection on your Azure virtual networks. 
+-	Use Azure Security Center to detect misconfiguration risks related to the above. 
 
-- [Azure Firewall Documentation](/azure/firewall/)
+- [Azure Firewall Documentation](../../firewall/index.yml)
 
 - [How to deploy Azure WAF](../../web-application-firewall/overview.md)
 
-- [Manage Azure DDoS Protection Standard using the Azure portal](../../virtual-network/manage-ddos-protection.md)
+- [Manage Azure DDoS Protection Standard using the Azure portal](../../ddos-protection/manage-ddos-protection.md)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-None
+- [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
+
+- [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)  
+
+- [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
 ## NS-5: Deploy intrusion detection/intrusion prevention systems (IDS/IPS)
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-5 | 12.6, 12.7 | SI-4 |
 
@@ -135,7 +146,7 @@ Note: If you have a regulatory or other requirement for IDS/IPS use, ensure that
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -145,7 +156,7 @@ Note: If you have a regulatory or other requirement for IDS/IPS use, ensure that
 
 ## NS-6: Simplify network security rules
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -157,11 +168,11 @@ You can also use application security groups to help simplify complex security c
 
 - [Understand and use service tags](../../virtual-network/service-tags-overview.md)
 
-- [Understand and use application security groups](/azure/virtual-network/security-overview#application-security-groups)
+- [Understand and use application security groups](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -171,7 +182,7 @@ You can also use application security groups to help simplify complex security c
 
 ## NS-7: Secure Domain Name Service (DNS)
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | NS-7 | N/A | SC-20, SC-21 |
 
@@ -187,11 +198,10 @@ When Azure DNS is used as your authoritative DNS service, ensure DNS zones and r
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
 - [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
-- [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
-
+- [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)

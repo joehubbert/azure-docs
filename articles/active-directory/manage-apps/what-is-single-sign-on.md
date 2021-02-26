@@ -3,7 +3,7 @@ title: What is Azure single sign-on (SSO)?
 description: Learn how single sign-on (SSO) works with Azure Active Directory. Use SSO so users don't need to remember passwords for every application. Also use SSO to simplify the administration of account management.
 services: active-directory
 author: kenwith
-manager: celestedg
+manager: daveba
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,14 +11,14 @@ ms.topic: overview
 ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
-ms.custom: contperfq1
+ms.custom: contperf-fy21q1
 ---
 
 # What is single sign-on (SSO)?
 
 Single sign-on means a user doesn't have to sign in to every application they use. The user logs in once and that credential is used for other apps too.
 
-If you're an end user, you likely don't care much about SSO details. You just want to use the apps that make you productive without having to type your password so much. You can find your apps at: https://myapplications.microsoft.com.
+If you're an end user, you likely don't care much about SSO details. You just want to use the apps that make you productive without having to type your password so much. You can find your apps at: https://myapps.microsoft.com.
  
 If you're an administrator, or IT professional, then read on to learn more about SSO and how it's implemented in Azure.
 
@@ -48,7 +48,7 @@ How you implement single sign-on depends on where the app is hosted. Hosting mat
 > [!TIP]
 > Cloud hosted apps are also called Software as a Service (SaaS) apps. 
 
-Single sign-on for cloud hosted apps are straightforward. You let the identity provider know it's being used for the app. And then you configure the app to trust the identity provider. To learn how to use Azure AD as an identity provider for an app, see the [Quickstart Series on Application Management](view-applications-portal.md).
+Single sign-on for cloud hosted apps are straightforward. You let the identity provider know it's being used for the app. And then you configure the app to trust the identity provider. To learn how to use Azure AD as an identity provider for an app, see the [Quickstart Series on Application Management](add-application-portal.md).
 
 > [!TIP]
 > The terms cloud and Internet are often used interchangeable. The reason for this has to do with network diagrams. It is common to denote large computer networks with a cloud shape on a diagram because it is not feasible to draw every component. The Internet is the most well-known network and thus it is easy to use the terms interchangeably. However, any computer network can be coined a cloud.

@@ -29,7 +29,7 @@ See the following article to learn about configuring time synchronization for Az
 ### 2.2: Configure central security log management
 **Guidance:** Enable Azure Activity Log diagnostic settings and send the logs to a Log Analytics workspace, Azure event hub, or Azure storage account for archive. Activity logs provide insight into the operations that were done on your Azure DevTest Labs instances at the management plane-level. Using Azure activity log data, you can determine "what, who, and when" for any write operations (PUT, POST, DELETE) done at the management plane-level for your DevTest Labs instances.
 
-For more information, see [Create diagnostic settings to send platform logs and metrics to different destinations](../azure-monitor/platform/diagnostic-settings.md).
+For more information, see [Create diagnostic settings to send platform logs and metrics to different destinations](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center monitoring:** Currently not available
 
@@ -38,7 +38,7 @@ For more information, see [Create diagnostic settings to send platform logs and 
 ### 2.3: Enable audit logging for Azure resources
 **Guidance:** Enable Azure Activity Log diagnostic settings and send the logs to a Log Analytics workspace, Azure event hub, or Azure storage account for archive. Activity logs provide insight into the operations that were done on your Azure DevTest Labs instances at the management plane-level. Using Azure Activity Log data, you can determine the "what, who, and when" for any write operations (PUT, POST, DELETE) done at the management plane-level for your DevTest Labs instances.
 
-For more information, see [Create diagnostic settings to send platform logs and metrics to different destinations](../azure-monitor/platform/diagnostic-settings.md).
+For more information, see [Create diagnostic settings to send platform logs and metrics to different destinations](../azure-monitor/essentials/diagnostic-settings.md).
 
 **Azure Security Center monitoring:** Currently not available
 
@@ -49,7 +49,7 @@ For more information, see [Create diagnostic settings to send platform logs and 
 
 For more information, see the following articles: 
 
-- [How to collect Azure Virtual Machine internal host logs with Azure Monitor](../azure-monitor/learn/quick-collect-azurevm.md)
+- [How to collect Azure Virtual Machine internal host logs with Azure Monitor](../azure-monitor/vm/quick-collect-azurevm.md)
 - [Understand Azure Security Center data collection](../security-center/security-center-enable-data-collection.md)
 
 **Azure Security Center monitoring:** Yes
@@ -59,7 +59,7 @@ For more information, see the following articles:
 ### 2.5: Configure security log storage retention
 ***Guidance:** In Azure Monitor, set log retention period for Log Analytics workspaces associated with your Azure DevTest Labs instances according to your organization's compliance regulations.
 
-For more information, see the following article: [How to set log retention parameters](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+For more information, see the following article: [How to set log retention parameters](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -70,8 +70,8 @@ For more information, see the following article: [How to set log retention param
 
 For more information, see the following articles:
 
-- [How to enable Diagnostic Settings for Azure Activity Log](../azure-monitor/platform/diagnostic-settings.md)
-- [How to collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor](../azure-monitor/platform/activity-log.md)
+- [How to enable Diagnostic Settings for Azure Activity Log](../azure-monitor/essentials/diagnostic-settings.md)
+- [How to collect and analyze Azure activity logs in Log Analytics workspace in Azure Monitor](../azure-monitor/essentials/activity-log.md)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -80,7 +80,7 @@ For more information, see the following articles:
 ### 2.7: Enable alerts for anomalous activity
 **Guidance:** Use Azure Log Analytics workspace for monitoring and alerting on anomalous activities in security logs and events related to your Azure DevTest Labs.
 
-For more information, see the following article: [How to alert on log analytics log data](../azure-monitor/learn/tutorial-response.md)
+For more information, see the following article: [How to alert on log analytics log data](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center monitoring:** Currently not available
 
@@ -104,8 +104,8 @@ For more information, see the following article: [How to alert on log analytics 
 **Guidance:** Azure DevTest Labs creates Azure Compute machines that are owned and managed by the customer. Use Microsoft Monitoring Agent on all supported Azure Windows VMs to log the process creation event and the `CommandLine` field. For supported Azure Linux VMs, you can manually configure console logging on a per-node basis and use Syslog to store the data. Also, use Azure Monitor's Log Analytics workspace to review logs and run queries on logged data from Azure VMs.
 
 - [Data collection in Azure Security Center](../security-center/security-center-enable-data-collection.md#data-collection-tier)
-- [How to run custom queries in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
-- [Syslog data sources in Azure Monitor](../azure-monitor/platform/data-sources-syslog.md)
+- [How to run custom queries in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
+- [Syslog data sources in Azure Monitor](../azure-monitor/agents/data-sources-syslog.md)
 
 **Azure Security Center monitoring:** Yes
 
@@ -178,7 +178,7 @@ Additionally, to help you keep track of dedicated administrative accounts, you m
 ### 3.6: Use dedicated machines (Privileged Access Workstations) for all administrative tasks
 **Guidance:** Use privileged access workstations (PAWs) with MFA configured to log into and configure Azure resources.
 
-- [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)  
+- [Learn about Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)  
 - [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)  
 
 **Azure Security Center monitoring:** N/A
@@ -259,7 +259,7 @@ You can streamline this process by creating Diagnostic Settings for Azure Active
 ### 4.1: Maintain an inventory of sensitive information
 **Guidance:** Use tags to assist in tracking Azure resources that store or process sensitive information.
 
-- [How to create and use tags](../azure-resource-manager/resource-group-using-tags.md)
+- [How to create and use tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -268,10 +268,10 @@ You can streamline this process by creating Diagnostic Settings for Azure Active
 ### 4.2: Isolate systems storing or processing sensitive information
 **Guidance:** Implement separate subscriptions or management groups for development, test, and production. Azure DevTest Labs instances should be separated by virtual network/subnet and tagged appropriately. 
 
-- [How to create additional Azure subscriptions](../billing/billing-create-subscription.md)
-- [How to create management groups](../governance/management-groups/create.md)
+- [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)
+- [How to create management groups](../governance/management-groups/create-management-group-portal.md)
 - [How to configure a virtual network for DevTest Labs](devtest-lab-configure-vnet.md)
-- [How to create and use tags](../azure-resource-manager/resource-group-using-tags.md)
+- [How to create and use tags](../azure-resource-manager/management/tag-resources.md)
 - [How to create and use tags for DevTest Labs](devtest-lab-add-tag.md)
 
 **Azure Security Center monitoring:** Currently not available
@@ -348,7 +348,7 @@ By default, all lab OS and data disks are encrypted with a platform managed key.
 ### 4.9: Log and alert on changes to critical Azure resources
 **Guidance:** Use Azure Monitor with the Azure Activity log to create alerts for when changes take place to DevTest Labs instances and other critical or related resources.
 
-- [How to create alerts for Azure activity Log events](../azure-monitor/platform/alerts-activity-log.md)
+- [How to create alerts for Azure activity Log events](../azure-monitor/alerts/alerts-activity-log.md)
 - [How to create alerts for DevTest Labs activity log events](create-alerts.md)
 
 **Azure Security Center monitoring:** Not applicable
@@ -374,8 +374,8 @@ Microsoft performs vulnerability management on the underlying resources that sup
 ### 5.2: Deploy automated operating system patch management solution
 **Guidance:** Use Azure Update Management to ensure the most recent security updates are installed on your Windows and Linux VMs hosted within DevTest Labs. For Windows VMs, ensure Windows Update has been enabled and set to update automatically. This setting isn't currently available to configure through DevTest Labs, however lab admin/subscription admin can configure this setting on the underlying compute VMs in their subscription. 
 
-- [How to configure Update Management for VMs in Azure](../automation/update-management/update-mgmt-overview.md)
-- [Understand Azure security policies monitored by Security Center](../security-center/security-center-policy-definitions.md)
+- [How to configure Update Management for VMs in Azure](../automation/update-management/overview.md)
+- [Understand Azure security policies monitored by Security Center](../security-center/policy-reference.md)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -388,8 +388,8 @@ Learn more about [DevTest Labs Image Factory](image-factory-create.md), which is
 
 As a subscription admin, you can also use the Azure Update Management solution to manage updates and patches for DevTest Labs VMs. Update Management relies on the locally configured update repository to patch supported Windows systems. Tools like System Center Updates Publisher (Updates Publisher) allow you to publish custom updates into Windows Server Update Services (WSUS). This scenario allows Update Management to patch machines that use Configuration Manager as their update repository with third-party software.
 
-- [Update Management solution in Azure](../automation/update-management/update-mgmt-overview.md)
-- [Manage updates and patches for your VMs](../automation/update-management/update-mgmt-overview.md)
+- [Update Management solution in Azure](../automation/update-management/overview.md)
+- [Manage updates and patches for your VMs](../automation/update-management/overview.md)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -439,7 +439,7 @@ As a subscription admin, you can also use the Azure Update Management solution t
 **Guidance:** Use tagging, management groups, and separate subscriptions, and separate labs where appropriate, to organize and track labs and lab-related resources. Reconcile inventory on a regular basis and ensure unauthorized resources are deleted from the subscription quickly.
 
 - [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)
-- [How to create Management Groups](../governance/management-groups/create.md)
+- [How to create Management Groups](../governance/management-groups/create-management-group-portal.md)
 - [How to create a lab using DevTest Labs](devtest-lab-create-lab.md)
 - [How to create and use tags](../azure-resource-manager/management/tag-resources.md)
 - [How to configure tags for a lab](devtest-lab-add-tag.md)
@@ -489,7 +489,7 @@ In addition to using Change Tracking for monitoring of software applications, ad
 **Guidance:** Azure Automation provides complete control during deployment, operations, and decommissioning of workloads and resources. As a subscription admin, you may use Change Tracking to identify all software installed on VMs hosted in DevTest Labs. You can implement your own process or use Azure Automation State Configuration for removing unauthorized software.
 
 - [An introduction to Azure Automation](../automation/automation-intro.md)
-- [Track changes in your environment with the Change Tracking solution](../automation/change-tracking.md)
+- [Track changes in your environment with the Change Tracking solution](../automation/change-tracking/overview.md)
 - [Azure Automation state configuration overview](../automation/automation-dsc-overview.md)
 
 **Azure Security Center monitoring:** Not Available
@@ -513,7 +513,7 @@ In addition to using Change Tracking for monitoring of software applications, ad
 
 See the following articles: 
 - [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
-- [How to deny a specific resource type with Azure Policy](../governance/policy/samples/not-allowed-resource-types.md)
+- [How to deny a specific resource type with Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center monitoring:** Yes
 
@@ -555,7 +555,7 @@ See the following articles:
 - [Configure virtual network for DevTest Labs](devtest-lab-configure-vnet.md)
 - [Azure Firewall overview](../firewall/overview.md)
 - [Web Application Firewall overview](../web-application-firewall/overview.md)
-- [Network security overview](../virtual-network/security-overview.md)
+- [Network security overview](../virtual-network/network-security-groups-overview.md)
 - [Azure Virtual Network overview]()
 - [Organize your resources with Azure management groups](../governance/management-groups/overview.md)
 - [Subscription decision guide](/azure/cloud-adoption-framework/decision-guides/subscriptions/)
@@ -613,9 +613,9 @@ You may also use recommendations from Azure Security Center as a secure configur
 
 Also, Azure Marketplace Virtual Machine Images published by Microsoft are managed and maintained by Microsoft.
 
-- [How to implement Azure Security Center vulnerability assessment recommendations](../security-center/security-center-vulnerability-assessment-recommendations.md)
+- [How to implement Azure Security Center vulnerability assessment recommendations](../security-center/deploy-vulnerability-assessment-vm.md)
 - [Azure Automation State Configuration overview](../automation/automation-dsc-overview.md)
-- [Sample script to upload a VHD to Azure and create a new VM](../virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script.md)
+- [Sample script to upload a VHD to Azure and create a new VM](/previous-versions/azure/virtual-machines/scripts/virtual-machines-windows-powershell-upload-generalized-script)
 - [How to create an image factory in DevTest Labs](image-factory-create.md)
 
 **Azure Security Center monitoring:** Yes
@@ -625,8 +625,8 @@ Also, Azure Marketplace Virtual Machine Images published by Microsoft are manage
 ### 7.5: Securely store configuration of Azure resources
 **Guidance:** Use Azure DevOps to securely store and manage your code like custom Azure policies, Azure Resource Manager templates and Desired State Configuration scripts. To access the resources you manage in Azure DevOps, you can grant or deny permissions to specific users, built-in security groups, or groups defined in Azure Active Directory (Azure AD) if integrated with Azure DevOps.
 
-- [Azure Repos Git tutorial](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow)
-- [About permissions and groups](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions?view=azure-devops&tabs=preview-page)
+- [Azure Repos Git tutorial](/azure/devops/repos/git/gitworkflow)
+- [About permissions and groups](/azure/devops/organizations/security/about-permissions?tabs=preview-page&view=azure-devops)
 - [Integration between Azure DevTest Labs and Azure DevOps workflow](devtest-lab-dev-ops.md)
 
 **Azure Security Center monitoring:** Not applicable
@@ -677,7 +677,7 @@ Also, Azure Marketplace Virtual Machine Images published by Microsoft are manage
 ### 7.10: Implement automated configuration monitoring for operating systems
 **Guidance:** Use Azure Security Center to perform baseline scans for OS and Docker Settings for containers.
 
-- [Understand Azure Security Center container recommendations](../security-center/security-center-container-recommendations.md)
+- [Understand Azure Security Center container recommendations](../security-center/container-security.md)
 
 **Azure Security Center monitoring:** Not applicable
 
@@ -688,7 +688,7 @@ Also, Azure Marketplace Virtual Machine Images published by Microsoft are manage
 
 - [Configure managed identity to deploy Azure Resource Manager environments in DevTest Labs](use-managed-identities-environments.md)
 - [Configure managed identity to deploy virtual machines in DevTest Labs](enable-managed-identities-lab-vms.md)
-- [How to create a key vault](../key-vault/quick-create-portal.md)
+- [How to create a key vault](../key-vault/general/quick-create-portal.md)
 - [How to authenticate to Key Vault](../key-vault/general/authentication.md)
 - [How to assign a Key Vault access policy](../key-vault/general/assign-access-policy-portal.md)
 

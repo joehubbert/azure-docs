@@ -71,7 +71,7 @@ For more information, see the [Azure security baselines overview](../security/be
 
 * [How to deploy Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
-* [Understand Azure Security Center Integrated Threat Intelligence](../security-center/threat-protection.md)
+* [Understand Azure Security Center Integrated Threat Intelligence](../security-center/azure-defender.md)
 
 * [Understand Azure Security Center Adaptive Network Hardening](../security-center/security-center-adaptive-network-hardening.md)
 
@@ -141,7 +141,7 @@ You may also use Application Security Groups to help simplify complex security c
 
 * [Understand and use Service Tags](../virtual-network/service-tags-overview.md) 
 
-* [Understand and use Application Security Groups](../virtual-network/security-overview.md#application-security-groups)
+* [Understand and use Application Security Groups](../virtual-network/network-security-groups-overview.md#application-security-groups)
 
 * [Deploy in a virtual network - Azure Container Instances](./container-instances-vnet.md)
 
@@ -157,7 +157,7 @@ You may also use Application Security Groups to help simplify complex security c
 
 * [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [Azure Policy samples for networking](/azure/governance/policy/samples/#network)
+* [Azure Policy samples for networking](../governance/policy/samples/built-in-policies.md#network)
 
 * [How to create an Azure Blueprint](../governance/blueprints/create-blueprint-portal.md)
 
@@ -190,9 +190,9 @@ You may use Azure PowerShell or Azure CLI to look-up or perform actions on resou
 
 **Guidance**: Use Azure Activity Log to monitor network resource configurations and detect changes for network resources related to your container instances. Create alerts within Azure Monitor that will trigger when changes to critical network resources take place.
 
-* [How to view and retrieve Azure Activity Log events](../azure-monitor/platform/activity-log.md#view-the-activity-log)
+* [How to view and retrieve Azure Activity Log events](../azure-monitor/essentials/activity-log.md#view-the-activity-log)
 
-* [How to create alerts in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
+* [How to create alerts in Azure Monitor](../azure-monitor/alerts/alerts-activity-log.md)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -249,7 +249,7 @@ You may use Azure PowerShell or Azure CLI to look-up or perform actions on resou
 
 **Guidance**: Within Azure Monitor, set your Log Analytics Workspace retention period according to your organization's compliance regulations. Use Azure Storage Accounts for long-term/archival storage.
 
-* [How to set log retention parameters for Log Analytics Workspaces](../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+* [How to set log retention parameters for Log Analytics Workspaces](../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -261,9 +261,9 @@ You may use Azure PowerShell or Azure CLI to look-up or perform actions on resou
 
 * [Container group and instance logging with Azure Monitor logs](./container-instances-log-analytics.md)
 
-* [Understand Log Analytics Workspace](../azure-monitor/log-query/get-started-portal.md)
+* [Understand Log Analytics Workspace](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [How to perform custom queries in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [How to perform custom queries in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -275,7 +275,7 @@ You may use Azure PowerShell or Azure CLI to look-up or perform actions on resou
 
 * [Container group and instance logging with Azure Monitor logs](./container-instances-log-analytics.md)
 
-* [How to alert on log analytics log data](../azure-monitor/learn/tutorial-response.md)
+* [How to alert on log analytics log data](../azure-monitor/alerts/tutorial-response.md)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -383,7 +383,7 @@ If you use an Azure container registry with Azure Container Instances, create pr
 
 **Guidance**: Use PAWs (privileged access workstations) with MFA configured to log into and configure Azure resources.
 
-* [Learn about Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
+* [Learn about Privileged Access Workstations](https://4sysops.com/archives/understand-the-microsoft-privileged-access-workstation-paw-security-model/)
 
 * [How to enable MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -496,7 +496,7 @@ Tag and version container images, to assist in tracking images that store or pro
 
 * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)
 
-* [How to create management groups](../governance/management-groups/create.md)
+* [How to create management groups](../governance/management-groups/create-management-group-portal.md)
 
 * [How to create and use tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -594,7 +594,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 **Guidance**: Use Azure Monitor with the Azure Activity Log to create alerts for when changes take place to your container groups and container instances. 
 
-* [How to create alerts for Azure Activity Log events](../azure-monitor/platform/alerts-activity-log.md)
+* [How to create alerts for Azure Activity Log events](../azure-monitor/alerts/alerts-activity-log.md)
 
 
 **Azure Security Center monitoring**: Not applicable
@@ -611,7 +611,7 @@ For the underlying platform which is managed by Microsoft, Microsoft treats all 
 
 * [Security considerations for Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integration with Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -650,7 +650,7 @@ Use a custom or third party solution to patch container images. If you store con
 
 * [Security considerations for Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integration with Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -662,7 +662,7 @@ Use a custom or third party solution to patch container images. If you store con
 
 * [Security considerations for Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integration with Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 **Azure Security Center monitoring**: Yes
 
@@ -705,7 +705,7 @@ Although classic Azure resources may be discovered via Resource Graph, it is hig
 
 * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)
 
-* [How to create Management Groups](../governance/management-groups/create.md)
+* [How to create Management Groups](../governance/management-groups/create-management-group-portal.md)
 
 * [How to create and use Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -748,12 +748,12 @@ Monitor Azure Container Instances logs for anomalous behavior and regularly revi
 
 * [Container group and instance logging with Azure Monitor logs](./container-instances-log-analytics.md)
 
-* [Understand Log Analytics Workspace](../azure-monitor/log-query/get-started-portal.md)
+* [Understand Log Analytics Workspace](../azure-monitor/logs/log-analytics-tutorial.md)
 
-* [How to perform custom queries in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
+* [How to perform custom queries in Azure Monitor](../azure-monitor/logs/get-started-queries.md)
 
 * [Security considerations for Azure Container Instances](./container-instances-image-security.md)
-* [Azure Container Registry integration with Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)
 
 
 
@@ -787,7 +787,7 @@ Monitor Azure Container Instances logs for anomalous behavior and regularly revi
 
 * [How to configure and manage Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-* [How to deny a specific resource type with Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types)
+* [How to deny a specific resource type with Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center monitoring**: Not applicable
 
@@ -823,7 +823,7 @@ Manage and review access to Azure Container Instances resources by using differe
 
 * [How to create additional Azure subscriptions](../cost-management-billing/manage/create-subscription.md)
 
-* [How to create management groups](../governance/management-groups/create.md)
+* [How to create management groups](../governance/management-groups/create-management-group-portal.md)
 
 * [Deploy in a virtual network - Azure Container Instances](./container-instances-vnet.md)
 
@@ -898,7 +898,7 @@ Use a custom or third party solution to patch container images. If you store con
 
 * [Container monitoring and scanning security recommendations for Azure Container Instances](./container-instances-image-security.md)
 
-* [Azure Container Registry integration with Security Center](../security-center/azure-container-registry-integration.md)
+* [Azure Container Registry integration with Security Center](../security-center/defender-for-container-registries-introduction.md)
 * [About base image updates for Azure Container Registry tasks](../container-registry/container-registry-tasks-base-images.md)
 
 
@@ -1103,7 +1103,7 @@ Optionally back up container images by importing from one registry to another.
 
 **Guidance**: You may enable Soft-Delete in Azure Key Vault to protect keys against accidental or malicious deletion.
 
-* [How to enable Soft-Delete in Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+* [How to enable Soft-Delete in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center monitoring**: Currently not available
 
@@ -1164,7 +1164,7 @@ Additionally, clearly mark subscriptions (for example. production, non-productio
 
 ### 10.5: Incorporate security alerts into your incident response system
 
-**Guidance**: Export your Azure Security Center alerts and recommendations using the Continuous Export feature. Continuous Export allows you to export alerts and recommendations either manually or in an ongoing, continuous fashion. You may use the Azure Security Center data connector to stream the alerts Sentinel.
+**Guidance**: Export your Azure Security Center alerts and recommendations using the Continuous Export feature. Continuous Export allows you to export alerts and recommendations either manually or in an ongoing, continuous fashion. You may use the Azure Security Center data connector to stream the alerts to Azure Sentinel.
 
 * [How to configure continuous export](../security-center/continuous-export.md)
 

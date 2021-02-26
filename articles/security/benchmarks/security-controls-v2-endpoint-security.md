@@ -4,19 +4,19 @@ description: Azure Security Benchmark V2 Endpoint Security
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 
 ---
 
-# Security Control: Endpoint Security
+# Security Control V2: Endpoint Security
 
 Endpoint Security covers controls in endpoint detection and response. This includes use of endpoint detection and response (EDR) and anti-malware service for endpoints in Azure environments.
 
 ## ES-1: Use Endpoint Detection and Response (EDR)
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | ES-1 | 8.1 | SI-2, SI-3, SC-3 |
 
@@ -32,7 +32,7 @@ Microsoft Defender Advanced Threat Protection provides EDR capability as part of
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -44,7 +44,7 @@ Microsoft Defender Advanced Threat Protection provides EDR capability as part of
 
 ## ES-2: Use centrally managed modern anti-malware software
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | ES-2 | 8.1 | SI-2, SI-3, SC-3 |
 
@@ -56,11 +56,11 @@ Microsoft Antimalware for Azure Cloud Services is the default anti-malware for W
 
 - [How to configure Microsoft Antimalware for Cloud Services and Virtual Machines](../fundamentals/antimalware.md)
 
-- [Supported endpoint protection solutions](https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions-)
+- [Supported endpoint protection solutions](../../security-center/security-center-services.md?tabs=features-windows#supported-endpoint-protection-solutions-)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -72,7 +72,7 @@ Microsoft Antimalware for Azure Cloud Services is the default anti-malware for W
 
 ## ES-3: Ensure anti-malware software and signatures are updated
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | ES-3 | 8.2 | SI-2, SI-3 |
 
@@ -84,7 +84,7 @@ Follow recommendations in Azure Security Center: "Compute &amp; Apps" to ensure 
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security)
 
@@ -94,3 +94,4 @@ Follow recommendations in Azure Security Center: "Compute &amp; Apps" to ensure 
 
 - [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
+- [Endpoint protection assessment and recommendations in Azure Security Center](../../security-center/security-center-endpoint-protection.md)

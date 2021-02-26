@@ -4,7 +4,7 @@ titleSuffix: Azure Kubernetes Service
 description: See the frequently asked questions when you run Windows Server node pools and application workloads in Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 07/29/2020
+ms.date: 10/12/2020
 
 #Customer intent: As a cluster operator, I want to see frequently asked questions when running Windows node pools and application workloads.
 ---
@@ -110,6 +110,49 @@ Yes you can, however Azure Monitor is in public preview for gathering logs (stdo
 
 A cluster with Windows nodes can have approximately 500 services before it encounters port exhaustion.
 
+## Can I use Azure Hybrid Benefit with Windows nodes?
+
+Yes. Azure Hybrid Benefit for Windows Server reduces operating costs by letting you bring your on-premises Windows Server license to AKS Windows nodes.
+
+Azure Hybrid Benefit can be used on your entire AKS cluster or on individual nodes. For individual nodes, you need to navigate to the [node resource group][resource-groups] and apply the Azure Hybrid Benefit to the nodes directly. For more information on applying Azure Hybrid Benefit to individual nodes, see [Azure Hybrid Benefit for Windows Server][hybrid-vms]. 
+
+To use Azure Hybrid Benefit on a new AKS cluster, use the `--enable-ahub` argument.
+
+```azurecli
+az aks create \
+    --resource-group myResourceGroup \
+    --name myAKSCluster \
+    --load-balancer-sku Standard \
+    --windows-admin-password 'Password1234$' \
+    --windows-admin-username azure \
+    --network-plugin azure
+    --enable-ahub
+```
+
+To use Azure Hybrid Benefit on an existing AKS cluster, update the cluster using the `--enable-ahub` argument.
+
+```azurecli
+az aks update \
+    --resource-group myResourceGroup
+    --name myAKSCluster
+    --enable-ahub
+```
+
+To check if Azure Hybrid Benefit is set on the cluster, use the following command:
+
+```azurecli
+az vmss show --name myAKSCluster --resource-group MC_CLUSTERNAME
+```
+
+If the cluster has Azure Hybrid Benefit enabled, the output of `az vmss show` will be similar to the following:
+
+```console
+"platformFaultDomainCount": 1,
+  "provisioningState": "Succeeded",
+  "proximityPlacementGroup": null,
+  "resourceGroup": "MC_CLUSTERNAME"
+```
+
 ## Can I use the Kubernetes Web Dashboard with Windows containers?
 
 Yes, you can use the [Kubernetes Web Dashboard][kubernetes-dashboard] to access information about Windows containers, but at this time you can't run *kubectl exec* into a running Windows container directly from the Kubernetes Web Dashboard. For more details on connecting to your running Windows container, see [Connect with RDP to Azure Kubernetes Service (AKS) cluster Windows Server nodes for maintenance or troubleshooting][windows-rdp].
@@ -143,9 +186,11 @@ To get started with Windows Server containers in AKS, [create a node pool that r
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909
 [maximum-number-of-pods]: configure-azure-cni.md#maximum-pods-per-node
-[azure-monitor]: ../azure-monitor/insights/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
+[azure-monitor]: ../azure-monitor/containers/container-insights-overview.md#what-does-azure-monitor-for-containers-provide
 [client-source-ip]: concepts-network.md#ingress-controllers
 [kubernetes-dashboard]: kubernetes-dashboard.md
 [windows-rdp]: rdp.md
 [upgrade-node-image]: node-image-upgrade.md
 [managed-identity]: use-managed-identity.md
+[hybrid-vms]: ../virtual-machines/windows/hybrid-use-benefit-licensing.md
+[resource-groups]: faq.md#why-are-two-resource-groups-created-with-aks

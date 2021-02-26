@@ -1,33 +1,33 @@
 ---
-title: Connect to Azure Resource Manager on your Azure Stack Edge GPU device
-description: Describes how to connect to the Azure Resource Manager running on your Azure Stack Edge GPU using Azure PowerShell.
+title: Connect to Azure Resource Manager on your Azure Stack Edge Pro GPU device
+description: Describes how to connect to the Azure Resource Manager running on your Azure Stack Edge Pro GPU using Azure PowerShell.
 services: databox
 author: alkohli
 
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/25/2021
 ms.author: alkohli
-#Customer intent: As an IT admin, I need to understand how to connect to Azure Resource Manager on my Azure Stack Edge device so that I can manage resources.
+#Customer intent: As an IT admin, I need to understand how to connect to Azure Resource Manager on my Azure Stack Edge Pro device so that I can manage resources.
 ---
 
-# Connect to Azure Resource Manager on your Azure Stack Edge device
+# Connect to Azure Resource Manager on your Azure Stack Edge Pro device
 
 <!--[!INCLUDE [applies-to-skus](../../includes/azure-stack-edge-applies-to-all-sku.md)]-->
 
-Azure Resource Manager provides a management layer that enables you to create, update, and delete resources in your Azure subscription. The Azure Stack Edge device supports the same Azure Resource Manager APIs to create, update, and delete VMs in a local subscription. This support lets you manage the device in a manner consistent with the cloud. 
+Azure Resource Manager provides a management layer that enables you to create, update, and delete resources in your Azure subscription. The Azure Stack Edge Pro device supports the same Azure Resource Manager APIs to create, update, and delete VMs in a local subscription. This support lets you manage the device in a manner consistent with the cloud. 
 
-This tutorial describes how to connect to the local APIs on your Azure Stack Edge device via Azure Resource Manager using Azure PowerShell.
+This tutorial describes how to connect to the local APIs on your Azure Stack Edge Pro device via Azure Resource Manager using Azure PowerShell.
 
 ## About Azure Resource Manager
 
-Azure Resource Manager provides a consistent management layer to call the Azure Stack Edge device API and perform operations such as create, update, and delete VMs. The architecture of the Azure Resource Manager is detailed in the following diagram.
+Azure Resource Manager provides a consistent management layer to call the Azure Stack Edge Pro device API and perform operations such as create, update, and delete VMs. The architecture of the Azure Resource Manager is detailed in the following diagram.
 
 ![Diagram for Azure Resource Manager](media/azure-stack-edge-j-series-connect-resource-manager/edge-device-flow.svg)
 
 
-## Endpoints on Azure Stack Edge device
+## Endpoints on Azure Stack Edge Pro device
 
 The following table summarizes the various endpoints exposed on your device, the supported protocols, and the ports to access those endpoints. Throughout the article, you will find references to these endpoints.
 
@@ -44,7 +44,7 @@ The process of connecting to local APIs of the device using Azure Resource Manag
 
 | Step # | You'll do this step ... | .. on this location. |
 | --- | --- | --- |
-| 1. | [Configure your Azure Stack Edge device](#step-1-configure-azure-stack-edge-device) | Local web UI |
+| 1. | [Configure your Azure Stack Edge Pro device](#step-1-configure-azure-stack-edge-pro-device) | Local web UI |
 | 2. | [Create and install certificates](#step-2-create-and-install-certificates) | Windows client/local web UI |
 | 3. | [Review and configure the prerequisites](#step-3-install-powershell-on-the-client) | Windows client |
 | 4. | [Set up Azure PowerShell on the client](#step-4-set-up-azure-powershell-on-the-client) | Windows client |
@@ -56,13 +56,13 @@ The following sections detail each of the above steps in connecting to Azure Res
 
 ## Prerequisites
 
-Before you begin, make sure that the client used for connecting to device via Azure Resource Manager is using TLS 1.2. For more information, go to [Configure TLS 1.2 on Windows client accessing Azure Stack Edge device](azure-stack-edge-j-series-configure-tls-settings.md).
+Before you begin, make sure that the client used for connecting to device via Azure Resource Manager is using TLS 1.2. For more information, go to [Configure TLS 1.2 on Windows client accessing Azure Stack Edge Pro device](azure-stack-edge-j-series-configure-tls-settings.md).
 
-## Step 1: Configure Azure Stack Edge device 
+## Step 1: Configure Azure Stack Edge Pro device 
 
-Take the following steps in the local web UI of your Azure Stack Edge device.
+Take the following steps in the local web UI of your Azure Stack Edge Pro device.
 
-1. Complete the network settings for your Azure Stack Edge device. 
+1. Complete the network settings for your Azure Stack Edge Pro device. 
 
     ![Local web UI "Network settings" page](./media/azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy/compute-network-2.png)
 
@@ -80,7 +80,7 @@ Take the following steps in the local web UI of your Azure Stack Edge device.
 
 ## Step 2: Create and install certificates
 
-Certificates ensure that your communication is trusted. On your Azure Stack Edge device, self-signed appliance, blob, and Azure Resource Manager certificates are automatically generated. Optionally, you can bring in your own signed blob and Azure Resource Manager certificates as well.
+Certificates ensure that your communication is trusted. On your Azure Stack Edge Pro device, self-signed appliance, blob, and Azure Resource Manager certificates are automatically generated. Optionally, you can bring in your own signed blob and Azure Resource Manager certificates as well.
 
 When you bring in a signed certificate of your own, you also need the corresponding signing chain of the certificate. For the signing chain, Azure Resource Manager, and the blob certificates on the device, you will need the corresponding certificates on the client machine also to authenticate and communicate with the device.
 
@@ -90,9 +90,9 @@ To connect to Azure Resource Manager, you will need to create or get signing cha
 
 For test and development use only, you can use Windows PowerShell to create certificates on your local system. While creating the certificates for the client, follow these guidelines:
 
-1. You first need to create a root certificate for the signing chain. For more information, see See steps to [Create signing chain certificates](azure-stack-edge-j-series-manage-certificates.md#create-signing-chain-certificate).
+1. You first need to create a root certificate for the signing chain. For more information, see See steps to [Create signing chain certificates](azure-stack-edge-gpu-manage-certificates.md#create-signing-chain-certificate).
 
-2. You can next create the endpoint certificates for the blob and Azure Resource Manager. You can get these endpoints from the **Device** page in the local web UI. See the steps to [Create endpoint certificates](azure-stack-edge-j-series-manage-certificates.md#create-signed-endpoint-certificates).
+2. You can next create the endpoint certificates for the blob and Azure Resource Manager. You can get these endpoints from the **Device** page in the local web UI. See the steps to [Create endpoint certificates](azure-stack-edge-gpu-manage-certificates.md#create-signed-endpoint-certificates).
 
 3. For all these certificates, make sure that the subject name and subject alternate name conform to the following guidelines:
 
@@ -102,26 +102,26 @@ For test and development use only, you can use Windows PowerShell to create cert
     |Blob storage|`*.blob.<Device name>.<Dns Domain>`|`*.blob.< Device name>.<Dns Domain>`|`*.blob.mydevice1.microsoftdatabox.com` |
     |Multi-SAN single certificate for both endpoints|`<Device name>.<dnsdomain>`|`login.<Device name>.<Dns Domain>`<br>`management.<Device name>.<Dns Domain>`<br>`*.blob.<Device name>.<Dns Domain>`|`mydevice1.microsoftdatabox.com` |
 
-For more information on certificates, go to how to [Manage certificates](azure-stack-edge-j-series-manage-certificates.md).
+For more information on certificates, go to how to [Manage certificates](azure-stack-edge-gpu-manage-certificates.md).
 
 ### Upload certificates on the device
 
 The certificates that you created in the previous step will be in the Personal store on your client. These certificates need to be exported on your client into appropriate format files that can then be uploaded to your device.
 
-1. The root certificate must be exported as a DER format file with *.cer* file extension. For detailed steps, see [Export certificates as a .cer format file](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-der-format).
+1. The root certificate must be exported as a DER format file with *.cer* file extension. For detailed steps, see [Export certificates as a .cer format file](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-der-format).
 
-2. The endpoint certificates must be exported as *.pfx* files with private keys. For detailed steps, see [Export certificates as .pfx file with private keys](azure-stack-edge-j-series-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
+2. The endpoint certificates must be exported as *.pfx* files with private keys. For detailed steps, see [Export certificates as .pfx file with private keys](azure-stack-edge-gpu-manage-certificates.md#export-certificates-as-pfx-format-with-private-key).
 
-3. The root and endpoint certificates are then uploaded on the device using the **+Add certificate** option on the **Certificates** page in the local web UI. To upload the certificates, follow the steps in [Upload certificates](azure-stack-edge-j-series-manage-certificates.md#upload-certificates).
+3. The root and endpoint certificates are then uploaded on the device using the **+Add certificate** option on the **Certificates** page in the local web UI. To upload the certificates, follow the steps in [Upload certificates](azure-stack-edge-gpu-manage-certificates.md#upload-certificates).
 
 
 ### Import certificates on the client running Azure PowerShell
 
 The Windows client where you will invoke the Azure Resource Manager APIs needs to establish trust with the device. To this end, the certificates that you created in the previous step must be imported on your Windows client into the appropriate certificate store.
 
-1. The root certificate that you exported as the DER format with *.cer* extension should now be imported in the Trusted Root Certificate Authorities on your client system. For detailed steps, see [Import certificates into the Trusted Root Certificate Authorities store.](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format)
+1. The root certificate that you exported as the DER format with *.cer* extension should now be imported in the Trusted Root Certificate Authorities on your client system. For detailed steps, see [Import certificates into the Trusted Root Certificate Authorities store.](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format)
 
-2. The endpoint certificates that you exported as the *.pfx* must be exported as *.cer*. This *.cer* is then imported in the **Personal** certificate store on your system. For detailed steps, see [Import certificates into personal store](azure-stack-edge-j-series-manage-certificates.md#import-certificates-as-der-format).
+2. The endpoint certificates that you exported as the *.pfx* must be exported as *.cer*. This *.cer* is then imported in the **Personal** certificate store on your system. For detailed steps, see [Import certificates into personal store](azure-stack-edge-gpu-manage-certificates.md#import-certificates-as-der-format).
 
 ## Step 3: Install PowerShell on the client 
 
@@ -135,9 +135,9 @@ Your Windows client must meet the following prerequisites:
 
     Compare the **Major** version and ensure that it is 5.0 or later.
 
-    If you have an outdated version, see [Upgrading existing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+    If you have an outdated version, see [Upgrading existing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true#upgrading-existing-windows-powershell).
 
-    If you don\'t have PowerShell 5.0, follow [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6).
+    If you don\'t have PowerShell 5.0, follow [Installing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6&preserve-view=true).
 
     A sample output is shown below.
 
@@ -153,7 +153,7 @@ Your Windows client must meet the following prerequisites:
     
 2. You can access the PowerShell Gallery.
 
-    Run PowerShell as administrator. Verify if the PSGallery is registered as a repository.
+    Run PowerShell as administrator. Verify if the `PSGallery` is registered as a repository.
 
     ```powershell
     Import-Module -Name PowerShellGet -ErrorAction Stop
@@ -172,11 +172,11 @@ Your Windows client must meet the following prerequisites:
     PSGallery                 Trusted              https://www.powershellgallery.com/api/v2
     ```
     
-If your repository is not trusted or you need more information, see [Validate the PowerShell Gallery accessibility](https://docs.microsoft.com/azure-stack/operator/azure-stack-powershell-install?view=azs-1908#2-validate-the-powershell-gallery-accessibility).
+If your repository is not trusted or you need more information, see [Validate the PowerShell Gallery accessibility](/azure-stack/operator/azure-stack-powershell-install?view=azs-1908&preserve-view=true&preserve-view=true#2-validate-the-powershell-gallery-accessibility).
 
 ## Step 4: Set up Azure PowerShell on the client 
 
-<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](https://docs.microsoft.com/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
+<!--1. Verify the API profile of the client and identify which version of the Azure PowerShell modules and libraries to include on your client. In this example, the client system will be running Azure Stack 1904 or later. For more information, see [Azure Resource Manager API profiles](/azure-stack/user/azure-stack-version-profiles?view=azs-1908#azure-resource-manager-api-profiles).-->
 
 1. You will install Azure PowerShell modules on your client that will work with your device.
 
@@ -316,7 +316,7 @@ Set the Azure Resource Manager environment and verify that your device to client
     AzDBE https://management.dbe-n6hugc2ra.microsoftdatabox.com https://login.dbe-n6hugc2ra.microsoftdatabox.com/adfs/
     ```
 
-2. Set the environment as Azure Stack Edge and the port to be used for Azure Resource Manager calls as 443. You define the environment in two ways:
+2. Set the environment as Azure Stack Edge Pro and the port to be used for Azure Resource Manager calls as 443. You define the environment in two ways:
 
     - Set the environment. Type the following command:
 
@@ -324,9 +324,9 @@ Set the Azure Resource Manager environment and verify that your device to client
     Set-AzureRMEnvironment -Name <Environment Name>
     ```
     
-    For more information, go to [Set-AzureRMEnvironment](https://docs.microsoft.com/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0).
+    For more information, go to [Set-AzureRMEnvironment](/powershell/module/azurerm.profile/set-azurermenvironment?view=azurermps-6.13.0&preserve-view=true).
 
-    - Define the environment inline for every cmdlet that you execute. This ensures that all the API calls are going through the correct environment. By default, the calls would go through the Azure public but you want these to go through the environment that you set for Azure Stack Edge device.
+    - Define the environment inline for every cmdlet that you execute. This ensures that all the API calls are going through the correct environment. By default, the calls would go through the Azure public but you want these to go through the environment that you set for Azure Stack Edge Pro device.
 
     - See more information on [how to switch AzureRM environments](#switch-environments).
 
@@ -373,7 +373,7 @@ Set the Azure Resource Manager environment and verify that your device to client
 
 
 > [!IMPORTANT]
-> The connection to Azure Resource Manager expires every 1.5 hours or if your Azure Stack Edge device restarts. If this happens, any cmdlets that you execute, will return error messages to the effect that you are not connected to Azure anymore. You will need to sign in again.
+> The connection to Azure Resource Manager expires every 1.5 hours or if your Azure Stack Edge Pro device restarts. If this happens, any cmdlets that you execute, will return error messages to the effect that you are not connected to Azure anymore. You will need to sign in again.
 
 ## Switch environments
 
@@ -457,4 +457,4 @@ ExtendedProperties : {}
 
 ## Next steps
 
-[Deploy VMs on your Azure Stack Edge device](azure-stack-edge-j-series-deploy-virtual-machine-powershell.md).
+[Deploy VMs on your Azure Stack Edge Pro device](azure-stack-edge-gpu-deploy-virtual-machine-powershell.md).

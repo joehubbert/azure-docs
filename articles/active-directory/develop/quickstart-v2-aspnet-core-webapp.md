@@ -1,7 +1,7 @@
 ---
-title: Add sign-in with Microsoft to ASP.NET Core web apps | Azure
+title: "Quickstart: Add sign-in with Microsoft to an ASP.NET Core web app | Azure"
 titleSuffix: Microsoft identity platform
-description: Learn how to implement Microsoft sign-in on an ASP.NET Core web app using OpenID Connect
+description: In this quickstart, you learn how an app implements Microsoft sign-in on an ASP.NET Core web app using OpenID Connect
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -18,9 +18,16 @@ ms.custom: "devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-
 
 # Quickstart: Add sign-in with Microsoft to an ASP.NET Core web app
 
-In this quickstart, you use a code sample to learn how an ASP.NET Core web app can sign in personal accounts (hotmail.com, outlook.com, others) and work and school accounts from any Azure Active Directory (Azure AD) instance. (See [How the sample works](#how-the-sample-works) for an illustration.)
+In this quickstart, you download and run a code sample that demonstrates how an ASP.NET Core web app can sign in users from any Azure Active Directory (Azure AD) organization.  
+
+See [How the sample works](#how-the-sample-works) for an illustration.
 
 > [!div renderon="docs"]
+> ## Prerequisites
+>
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/vs/) or [Visual Studio Code](https://code.visualstudio.com/)
+> * [.NET Core SDK 3.1+](https://dotnet.microsoft.com/download)
+>
 > ## Register and download your quickstart app
 > You have two options to start your quickstart application:
 > * [Express] [Option 1: Register and auto configure your app and then download your code sample](#option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample)
@@ -28,31 +35,31 @@ In this quickstart, you use a code sample to learn how an ASP.NET Core web app c
 >
 > ### Option 1: Register and auto configure your app and then download your code sample
 >
-> 1. Go to the [Azure portal - App registrations](https://aka.ms/aspnetcore2-1-aad-quickstart-v2).
+> 1. Go to the <a href="https://aka.ms/aspnetcore2-1-aad-quickstart-v2/" target="_blank">Azure portal - App registrations</a> quickstart experience.
 > 1. Enter a name for your application and select **Register**.
 > 1. Follow the instructions to download and automatically configure your new application for you in one click.
 >
 > ### Option 2: Register and manually configure your application and code sample
 >
 > #### Step 1: Register your application
-> To register your application and manually add the app's registration information to your solution, follow these steps:
+> To register your application and add the app's registration information to your solution manually, follow these steps:
 >
-> 1. Sign in to the [Azure portal](https://portal.azure.com).
+> 1. Sign in to the <a href="https://portal.azure.com/" target="_blank">Azure portal</a>.
 > 1. If you have access to multiple tenants, use the **Directory + subscription** filter :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false"::: in the top menu to select the tenant in which you want to register an application.
 > 1. Search for and select **Azure Active Directory**.
-> 1. Under **Manage**, select **App registrations**, then **New registration**.
+> 1. Under **Manage**, select **App registrations** > **New registration**.
 > 1. Enter a **Name** for your application, for example `AspNetCore-Quickstart`. Users of your app might see this name, and you can change it later.
-> 1. Enter a **Redirect URI** of `https://localhost:44321/`
+> 1. Enter a **Redirect URI** of `https://localhost:44321/`.
 > 1. Select **Register**.
 > 1. Under **Manage**, select **Authentication**.
-> 1. Under **Redirect URIs**, select **Add URI**, and then enter `https://localhost:44321/signin-oidc`
-> 1. Enter a **Logout URL** of `https://localhost:44321/signout-oidc`
-> 1. Under **Implicit grant**, select **ID tokens**.
+> 1. Under **Redirect URIs**, select **Add URI**, and then enter `https://localhost:44321/signin-oidc`.
+> 1. Enter a **Front-channel logout URL** of `https://localhost:44321/signout-oidc`.
+> 1. Under **Implicit grant and hybrid flows**, select **ID tokens**.
 > 1. Select **Save**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### Step 1: Configure your application in the Azure portal
-> For the code sample for this quickstart to work, you need to add reply URLs as `https://localhost:44321/` and `https://localhost:44321/signin-oidc`, add the Logout URL as `https://localhost:44321/signout-oidc`, and request ID tokens to be issued by the authorization endpoint.
+> For the code sample in this quickstart to work, add a **Redirect URI** of `https://localhost:44321/` and `https://localhost:44321/signin-oidc` and a **Front-channel logout URL** of `https://localhost:44321/signout-oidc`. Request ID tokens will be issued by the authorization endpoint.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Make this change for me]()
 >
@@ -93,18 +100,18 @@ In this quickstart, you use a code sample to learn how an ASP.NET Core web app c
 >       - If your application supports **Accounts in any organizational directory**, replace this value with `organizations`
 >       - If your application supports **All Microsoft account users**, leave this value as `common`
 >
-> For this quickstart, do not alter any other values in the *appsettings.json* file.
+> For this quickstart, don't change any other values in the *appsettings.json* file.
 >
 > #### Step 4: Build and run the application
-> 
+>
 > Build and run the app in Visual Studio by selecting the **Debug** menu > **Start Debugging**, or by pressing the `F5` key.
-> 
+>
 > You're prompted for your credentials, and then asked to consent to the permissions your app requires. Select **Accept** on the consent prompt.
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-01-consent.png" alt-text="Consent dialog showing the permissions the app is requesting from the > user":::
-> 
+>
 > After consenting to the requested permissions, the app displays that you've successfully logged in using your Azure Active Directory credentials.
-> 
+>
 > :::image type="content" source="media/quickstart-v2-aspnet-core-webapp/webapp-02-signed-in.png" alt-text="Web browser displaying the running web app and the user signed in":::
 
 ## More information
@@ -138,7 +145,7 @@ The *Microsoft.AspNetCore.Authentication* middleware uses a `Startup` class that
 
 The `AddAuthentication()` method configures the service to add cookie-based authentication, which is used in browser scenarios and to set the challenge to OpenID Connect.
 
-The line containing `.AddMicrosoftIdentityWebApp` adds Microsoft identity platform authentication to your application. It's then configured to sign in using the Microsoft identity platform endpoint based on the information in the `AzureAD` section of the *appsettings.json* configuration file:
+The line containing `.AddMicrosoftIdentityWebApp` adds the Microsoft identity platform authentication to your application. It's then configured to sign in using the Microsoft identity platform based on the information in the `AzureAD` section of the *appsettings.json* configuration file:
 
 | *appsettings.json* key | Description                                                                                                                                                          |
 |------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -146,17 +153,22 @@ The line containing `.AddMicrosoftIdentityWebApp` adds Microsoft identity platfo
 | `Instance`             | Security token service (STS) endpoint for the user to authenticate. This value is typically `https://login.microsoftonline.com/`, indicating the Azure public cloud. |
 | `TenantId`             | Name of your tenant or its tenant ID (a GUID), or *common* to sign in users with work or school accounts or Microsoft personal accounts.                             |
 
-The `Configure()` method contains two important methods, `app.UseCookiePolicy()` and `app.UseAuthentication()`, that enable their named functionality.
+The `Configure()` method contains two important methods, `app.UseAuthentication()` and `app.UseAuthorization()`, that enable their named functionality. Also in the `Configure()` method, you must register Microsoft Identity Web's routes with at least one call to `endpoints.MapControllerRoute()` or a call to `endpoints.MapControllers()`.
 
 ```csharp
-// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.UseEndpoints(endpoints =>
 {
-    // more code
-    app.UseAuthentication();
-    app.UseAuthorization();
-    // more code
-}
+
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
+});
+
+// endpoints.MapControllers(); // REQUIRED if MapControllerRoute() isn't called.
 ```
 
 ### Protect a controller or a controller's method

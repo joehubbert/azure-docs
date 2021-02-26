@@ -77,7 +77,7 @@ Create a separate API key for each of your Azure Pipelines release templates.
 
 Now, whenever you use the release template to deploy a new release, an annotation is sent to Application Insights. The annotations can be viewed in the following locations:
 
-The usage pane where you also have the ability to manually create release annotations:
+The **Usage** pane where you also have the ability to manually create release annotations:
 
 ![Screenshot of bar chart with number of user visits displayed over a period of hours. Release annotations appear as green checkmarks above the chart indicating the moment in time that a release occurred](./media/annotations/usage-pane.png)
 
@@ -92,9 +92,9 @@ To enable annotations in your workbook go to **Advanced Settings** and select **
 Select any annotation marker to open details about the release, including requestor, source control branch, release pipeline, and environment.
 
 ## Create custom annotations from PowerShell
-You can use the [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell script from GitHub to create annotations from any process you like, without using Azure DevOps. 
+You can use the [CreateReleaseAnnotation](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell script from GitHub to create annotations from any process you like, without using Azure DevOps. 
 
-1. Make a local copy of [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
+1. Make a local copy of [CreateReleaseAnnotation.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1).
    
 1. Use the steps in the preceding procedure to get your Application Insights ID and create an API key from your Application Insights **API Access** tab.
    

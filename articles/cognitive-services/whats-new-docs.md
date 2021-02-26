@@ -1,62 +1,61 @@
 ---
-title: "Cognitive Services docs: What's new for August 1, 2020 - August 31, 2020"
-description: "What's new in the Cognitive Services docs for August 1, 2020 - August 31, 2020."
+title: "Cognitive Services: What's new in docs"
+description: "What's new in the Cognitive Services docs for January 1, 2021 - January 31, 2021."
 author: erhopf
 manager: nitinme
 ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
-ms.date: 09/08/2020
+ms.date: 02/08/2021
 ---
 
-# Cognitive Services docs: What's new for August 1, 2020 - August 31, 2020
+# Cognitive Services docs: What's new for January 1, 2021 - January 31, 2021
 
-Welcome to what's new in the Cognitive Services docs from August 1, 2020 through August 31, 2020. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the Cognitive Services docs from January 1, 2021 through January 31, 2021. This article lists some of the major changes to docs during this period.
 
-## Computer Vision
+## Cognitive Services
 
-### New articles
+**Updated articles**
 
-- [Upgrade to v3.0 of Computer Vision API from v2.0 and v2.1](/azure/cognitive-services/computer-vision/upgrade-api-versions)
-
-## Containers
-
-### Updated articles
-
-- [Azure Cognitive Services container image tags](/azure/cognitive-services/containers/container-image-tags)
+- [Plan and manage costs for Azure Cognitive Services](plan-manage-costs.md)
+- [Azure Cognitive Services containers](cognitive-services-container-support.md)
 
 ## Form Recognizer
 
-### New articles
+**New articles**
 
-- [Business card concepts](/azure/cognitive-services/form-recognizer/concept-business-cards)
-- [Receipt concepts](/azure/cognitive-services/form-recognizer/concept-receipts)
-- [Quickstart: Extract business card data using the Form Recognizer REST API with Python](/azure/cognitive-services/form-recognizer/quickstarts/python-business-cards)
+- [Tutorial: Extract form data in bulk using Azure Data Factory](/azure/cognitive-services/form-recognizer/tutorial-bulk-processing.md)
 
-### Updated articles
+**Updated articles**
 
-- [Quickstart: Train a Form Recognizer model and extract form data by using the REST API with cURL](/azure/cognitive-services/form-recognizer/quickstarts/curl-train-extract)
-- [Quickstart: Train a Form Recognizer model with labels using REST API and Python](/azure/cognitive-services/form-recognizer/quickstarts/python-labeled-data)
-- [Quickstart: Extract text and layout information using the Form Recognizer REST API with Python](/azure/cognitive-services/form-recognizer/quickstarts/python-layout)
-- [Quickstart: Train a Form Recognizer model and extract form data by using the REST API with Python](/azure/cognitive-services/form-recognizer/quickstarts/python-train-extract)
+- [What is Form Recognizer?](/azure/cognitive-services/form-recognizer/overview.md)
 
-## Speech Service
+## Immersive Reader
 
-### New articles
+**Updated articles**
 
-- [Speech Services quotas and limits](/azure/cognitive-services/speech-service/speech-services-quotas-and-limits)
+- [Create an Immersive Reader resource and configure Azure Active Directory authentication](/azure/cognitive-services/immersive-reader/how-to-create-immersive-reader.md)
 
-### Updated articles
+## Personalizer
 
-- [Long Audio API (Preview)](/azure/cognitive-services/speech-service/long-audio-api)
+**Updated articles**
+
+- [Features are information about actions and context](/azure/cognitive-services/personalizer/concepts-features.md)
+
+## Text Analytics
+
+**Updated articles**
+
+- [Text Analytics API v3 language support](/azure/cognitive-services/text-analytics/language-support.md)
+- [Migrate to version 3.x of the Text Analytics API](/azure/cognitive-services/text-analytics/migration-guide.md)
+- [What's new in the Text Analytics API?](/azure/cognitive-services/text-analytics/whats-new.md)
 
 ## Community contributors
 
-The following people contributed to the Cognitive Services docs during this period. Thank you! 
+The following people contributed to the Cognitive Services docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (2)
-- [anwesh-b](https://github.com/anwesh-b) - Anwesh Budhathoki (1)
-- [jangelfdez](https://github.com/jangelfdez) - José Ángel Fernández (1)
-- [xhan742](https://github.com/xhan742) (1)
+- [AnweshGangula](https://github.com/AnweshGangula) - Anwesh Gangula (1)
+- [cdglasz](https://github.com/cdglasz) - Christopher Glasz (1)
+- [huybuidac](https://github.com/huybuidac) - Bui Dac Huy (1)
 
 [!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]

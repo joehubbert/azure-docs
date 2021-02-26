@@ -17,9 +17,9 @@ This quickstart describes the steps for creating a new API Management instance u
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-You can use the Azure Cloud Shell or a local installation of the Azure CLI to complete this quickstart. If you'd like to use it locally, version 2.11.1 or later is recommended. Run `az --version` to find the version. If you need to install or upgrade, see [Install Azure CLI](/cli/azure/install-azure-cli).
+- This article requires version 2.11.1 or later of the Azure CLI. If using Azure Cloud Shell, the latest version is already installed.
 
 ## Create a resource group
 
@@ -46,7 +46,7 @@ az apim create --name myapim --resource-group myResourceGroup \
 By default, the command creates the instance in the Developer tier, an economical option to evaluate Azure API Management. This tier isn't for production use. For more information about scaling the API Management tiers, see [upgrade and scale](upgrade-and-scale.md). 
 
 > [!TIP]
-> It usually takes between 20 and 30 minutes to create and activate an API Management service in this tier. The previous command uses the `--no-wait` option so that the command returns immediately while the service is created.
+> It can take between 30 and 40 minutes to create and activate an API Management service in this tier. The previous command uses the `--no-wait` option so that the command returns immediately while the service is created.
 
 Check the status of the deployment by running the [az apim show](/cli/azure/apim#az-apim-show) command:
 

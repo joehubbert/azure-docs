@@ -4,19 +4,19 @@ description: Azure Security Benchmark V2 Logging and Threat Detection
 author: msmbaldwin
 ms.service: security
 ms.topic: conceptual
-ms.date: 09/13/2020
+ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 
 ---
 
-# Security Control: Logging and Threat Detection
+# Security Control V2: Logging and Threat Detection
 
 Logging and Threat Detection covers controls for detecting threats on Azure and enabling, collecting, and storing audit logs for Azure services. This includes enabling detection, investigation, and remediation processes with controls to generate high quality alerts with native threat detection in Azure services; it also includes collecting logs with Azure Monitor, centralizing security analysis with Azure Sentinel, time synchronization, and log retention. 
 
 ## LT-1: Enable threat detection for Azure resources
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-1 | 6.7 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -26,7 +26,7 @@ Use the Azure Security Center built-in threat detection capability, which is bas
 
 In addition, use Azure Sentinel to build analytics rules, which hunt threats that match  specific criteria across your environment. The rules generate incidents when the criteria are matched, so that you can investigate each incident. Azure Sentinel can also import third party threat intelligence to enhance its threat detection capability. 
 
-- [Threat protection in Azure Security Center](../../security-center/threat-protection.md)
+- [Threat protection in Azure Security Center](../../security-center/azure-defender.md)
 
 - [Azure Security Center security alerts reference guide](../../security-center/alerts-reference.md)
 
@@ -36,11 +36,11 @@ In addition, use Azure Sentinel to build analytics rules, which hunt threats tha
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Security operations (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Security operations](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -50,7 +50,7 @@ In addition, use Azure Sentinel to build analytics rules, which hunt threats tha
 
 ## LT-2: Enable threat detection for Azure identity and access management
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-2 | 6.8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -69,15 +69,15 @@ Azure Security Center can also alert on certain suspicious activities such as an
 
 - [Enable Azure Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Threat protection in Azure Security Center](../../security-center/threat-protection.md)
+- [Threat protection in Azure Security Center](../../security-center/azure-defender.md)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Security operations (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Security operations](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -87,7 +87,7 @@ Azure Security Center can also alert on certain suspicious activities such as an
 
 ## LT-3: Enable logging for Azure network activities
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-3 | 9.3, 12.2, 12.5, 12.8 | AU-3, AU-6, AU-12, SI-4 |
 
@@ -108,11 +108,11 @@ Ensure you are collecting DNS query logs to assist in correlating other network 
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
 
-- [Security operations (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Security operations](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 - [Posture management](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)   
 
@@ -122,35 +122,33 @@ Ensure you are collecting DNS query logs to assist in correlating other network 
 
 ## LT-4: Enable logging for Azure resources
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-4 | 6.2, 6.3, 8.8 | AU-3, AU-12 |
 
-Enable logging for Azure resources to meet the requirements for compliance, threat detection and investigation, and threat hunting. 
+Enable logging for Azure resources to meet the requirements for compliance, threat detection, hunting, and incident investigation. 
 
 You can use Azure Security Center and Azure Policy to enable resource logs and log data collecting on Azure resources for access to audit, security, and resource logs. Activity logs, which are automatically available, include event source, date, user, timestamp, source addresses, destination addresses, and other useful elements. 
 
-- [Understand logging and different log types in Azure](../../azure-monitor/platform/platform-logs-overview.md)
+- [Understand logging and different log types in Azure](../../azure-monitor/essentials/platform-logs-overview.md)
 
 - [Understand Azure Security Center data collection](../../security-center/security-center-enable-data-collection.md)
 
-- [Enable and configure antimalware monitoring](../fundamentals/antimalware.md#enable-and-configure-antimalware-monitoring-using-powershell-cmdlets)
-
 **Responsibility**: Shared
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-- [Security operations (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
+- [Security operations](/azure/cloud-adoption-framework/organize/cloud-security-operations-center)
 
 Infrastructure and endpoint security 
 
-- [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
+- [Application security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Threat intelligence](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
 ## LT-5: Centralize security log management and analysis
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-5 | 6.5, 6.6 | AU-3, SI-4 |
 
@@ -162,13 +160,13 @@ In addition, enable and onboard data to Azure Sentinel or a third-party SIEM.
 
 Many organizations choose to use Azure Sentinel for “hot” data that is used frequently and Azure Storage for “cold” data that is used less frequently. 
 
-- [How to collect platform logs and metrics with Azure Monitor](../../azure-monitor/platform/diagnostic-settings.md)
+- [How to collect platform logs and metrics with Azure Monitor](../../azure-monitor/essentials/diagnostic-settings.md)
 
 - [How to onboard Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -178,35 +176,35 @@ Many organizations choose to use Azure Sentinel for “hot” data that is used 
 
 ## LT-6: Configure log storage retention
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-6 | 6.4 | AU-3, AU-11 |
 
-Configure your log retention according to your compliance, regulation, and other requirements. 
+Configure your log retention according to your compliance, regulation, and business requirements. 
 
 In Azure Monitor, you can set your Log Analytics workspace retention period according to your organization's compliance regulations. Use Azure Storage, Data Lake or Log Analytics workspace accounts for long-term and archival storage.
 
-- [Change the data retention period in Log Analytics](../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period)
+- [Change the data retention period in Log Analytics](../../azure-monitor/logs/manage-cost-storage.md#change-the-data-retention-period)
 
-How to configure retention policy for Azure Storage account logs: ttps://docs.microsoft.com/azure/storage/common/storage-monitor-storage-account#configure-logging
+- [How to configure retention policy for Azure Storage account logs](../../storage/common/storage-monitor-storage-account.md#configure-logging)
 
 - [Azure Security Center alerts and recommendations export](../../security-center/continuous-export.md)
 
 **Responsibility**: Customer
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Security architecture](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
-- [Security operations (SecOps)](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
+- [Security operations](/azure/cloud-adoption-framework/organize/cloud-security-operations-center) 
 
 - [Security compliance management](/azure/cloud-adoption-framework/organize/cloud-security-compliance-management)
 
 ## LT-7: Use approved time synchronization sources
 
-| Azure ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure ID | CIS Controls v7.1 ID(s) | NIST SP 800-53 r4 ID(s) |
 |--|--|--|--|
 | LT-7 | 6.1 | AU-8 |
 
@@ -222,11 +220,10 @@ All logs generated by resources within Azure provide time stamps with the time z
 
 **Responsibility**: Shared
 
-**Customer Security Stakeholders**:
+**Customer Security Stakeholders** ([Learn more](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Policy and standards](/azure/cloud-adoption-framework/organize/cloud-security-policy-standards)
 
 - [Application Security and DevOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops) 
 
 - [Infrastructure and endpoint security](/azure/cloud-adoption-framework/organize/cloud-security-infrastructure-endpoint)
-

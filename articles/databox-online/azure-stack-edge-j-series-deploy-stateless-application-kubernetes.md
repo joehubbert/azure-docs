@@ -1,17 +1,17 @@
 ---
-title: Deploy Kubernetes stateless application on Azure Stack Edge GPU device using kubectl| Microsoft Docs
-description: Describes how to create and manage a Kubernetes stateless application deployment using kubectl on a Microsoft Azure Stack Edge device.
+title: Deploy Kubernetes stateless application on Azure Stack Edge Pro GPU device using kubectl| Microsoft Docs
+description: Describes how to create and manage a Kubernetes stateless application deployment using kubectl on a Microsoft Azure Stack Edge Pro device.
 services: databox
 author: alkohli
 
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 01/22/2021
 ms.author: alkohli
 ---
 
-# Deploy a Kubernetes stateless application via kubectl on your Azure Stack Edge GPU device
+# Deploy a Kubernetes stateless application via kubectl on your Azure Stack Edge Pro GPU device
 
 This article describes how to deploy a stateless application using kubectl commands on an existing Kubernetes cluster. This article also walks you through the process of creating and setting up pods in your stateless application.
 
@@ -19,13 +19,13 @@ This article describes how to deploy a stateless application using kubectl comma
 
 Before you can create a Kubernetes cluster and use the `kubectl` command-line tool, you need to ensure that:
 
-- You have sign-in credentials to a 1-node Azure Stack Edge device.
+- You have sign-in credentials to a 1-node Azure Stack Edge Pro device.
 
-- Windows PowerShell 5.0 or later is installed on a Windows client system to access the Azure Stack Edge device. You can have any other client with a Supported operating system as well. This article describes the procedure when using a Windows client. To download the latest version of Windows PowerShell, go to [Installing Windows PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-7).
+- Windows PowerShell 5.0 or later is installed on a Windows client system to access the Azure Stack Edge Pro device. You can have any other client with a Supported operating system as well. This article describes the procedure when using a Windows client. To download the latest version of Windows PowerShell, go to [Installing Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-7&preserve-view=true).
 
-- Compute is enabled on the Azure Stack Edge device. To enable compute, go to the **Compute** page in the local UI of the device. Then select a network interface that you want to enable for compute. Select **Enable**. Enabling compute results in the creation of a virtual switch on your device on that network interface. For more information, see [Enable compute network on your Azure Stack Edge](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
+- Compute is enabled on the Azure Stack Edge Pro device. To enable compute, go to the **Compute** page in the local UI of the device. Then select a network interface that you want to enable for compute. Select **Enable**. Enabling compute results in the creation of a virtual switch on your device on that network interface. For more information, see [Enable compute network on your Azure Stack Edge Pro](azure-stack-edge-gpu-deploy-configure-network-compute-web-proxy.md).
 
-- Your Azure Stack Edge device has a Kubernetes cluster server running that is version v1.9 or later. For more information, see [Create and manage a Kubernetes cluster on Microsoft Azure Stack Edge device](azure-stack-edge-gpu-create-kubernetes-cluster.md).
+- Your Azure Stack Edge Pro device has a Kubernetes cluster server running that is version v1.9 or later. For more information, see [Create and manage a Kubernetes cluster on Microsoft Azure Stack Edge Pro device](azure-stack-edge-gpu-create-kubernetes-cluster.md).
 
 - You have installed `kubectl`.
 
@@ -39,7 +39,7 @@ Before we begin, you should have:
 4. Saved the user configuration to `C:\Users\<username>\.kube`.
 5. Installed `kubectl`.
 
-Now you can begin running and managing stateless application deployments on an Azure Stack Edge device. Before you start using `kubectl`, you need to verify that you have the correct version of `kubectl`.
+Now you can begin running and managing stateless application deployments on an Azure Stack Edge Pro device. Before you start using `kubectl`, you need to verify that you have the correct version of `kubectl`.
 
 ### Verify you have the correct version of kubectl and set up configuration
 
@@ -51,7 +51,7 @@ To check the version of `kubectl`:
    kubectl version
    ```
     
-   Here is an example of the output:
+   An example of the output is shown below:
     
    ```powershell
    PS C:\WINDOWS\system32> C:\windows\system32\kubectl.exe version
@@ -59,7 +59,7 @@ To check the version of `kubectl`:
    Server Version: version.Info{Major:"1", Minor:"15", GitVersion:"v1.15.1", GitCommit:"4485c6f18cee9a5d3c3b4e523bd27972b1b53892", GitTreeState:"clean", BuildDate:"2019-07-18T09:09:21Z", GoVersion:"go1.12.5", Compiler:"gc", Platform:"linux/amd64"}
    ```
 
-   In this case the client version of kubectl is v1.15.2 and is compatible to proceed.
+   In this case, the client version of kubectl is v1.15.2 and is compatible to continue.
 
 2. Get a list of the pods running on your Kubernetes cluster. A pod is an application container, or process, running on your Kubernetes cluster.
 
@@ -67,7 +67,7 @@ To check the version of `kubectl`:
    kubectl get pods -n <namespace-string>
    ```
     
-   Here is an example of command usage:
+   An example of command usage is shown below:
     
    ```powershell
    PS C:\WINDOWS\system32> kubectl get pods -n "test1"
@@ -99,13 +99,13 @@ To check the version of `kubectl`:
 
 ### Create a stateless application using a deployment
 
-Now that you have verified that the kubectl command-line version is correct and have the required configuration files, you can create a stateless application deployment.
+Now that you've verified that the kubectl command-line version is correct and you have the required configuration files, you can create a stateless application deployment.
 
 A pod is the basic execution unit of a Kubernetes application, the smallest and simplest unit in the Kubernetes object model that you create or deploy. A pod also encapsulates storage resources, a unique network IP, and options that govern how the container(s) should run.
 
 The type of stateless application that you create is an nginx web server deployment.
 
-All kubectl commands you use to create and manage stateless application deployments need to specify the namespace associated with the configuration. You created the namespace while connected to the cluster on the Azure Stack Edge device in the [Create and manage a Kubernetes cluster on Microsoft Azure Stack Edge device](azure-stack-edge-gpu-create-kubernetes-cluster.md) tutorial with `New-HcsKubernetesNamespace`.
+All kubectl commands you use to create and manage stateless application deployments need to specify the namespace associated with the configuration. You created the namespace while connected to the cluster on the Azure Stack Edge Pro device in the [Create and manage a Kubernetes cluster on Microsoft Azure Stack Edge Pro device](azure-stack-edge-gpu-create-kubernetes-cluster.md) tutorial with `New-HcsKubernetesNamespace`.
 
 To specify the namespace in a kubectl command, use `kubectl <command> -n <namespace-string>`.
 
@@ -119,7 +119,7 @@ Follow these steps to create an nginx deployment:
 
    In this example, the path to the application YAML file is an external source.
 
-   Here is a sample usage of the command and output:
+   Here is a sample use of the command and its output:
 
    ```powershell
    PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment.yaml -n "test1"
@@ -127,7 +127,7 @@ Follow these steps to create an nginx deployment:
    deployment.apps/nginx-deployment created
    ```
 
-   Alternatively, you can save the following markdown to your local machine and substitute the path and filename in the *-f* parameter. For instance, "C:\Kubernetes\deployment.yaml". Here is the configuration for the application deployment:
+   Alternatively, you can save the following markdown to your local machine and substitute the path and filename in the *-f* parameter. For instance, "C:\Kubernetes\deployment.yaml". The configuration for the application deployment would be:
 
    ```markdown
    apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -159,7 +159,7 @@ Follow these steps to create an nginx deployment:
    kubectl describe deployment nginx-deployment -n <namespace-string>
    ```
 
-   Here is sample usage of the command and output:
+   A sample use of the command, with output, is shown below:
     
    ```powershell
    PS C:\Users\user> kubectl describe deployment nginx-deployment -n "test1"
@@ -199,13 +199,13 @@ Follow these steps to create an nginx deployment:
      Normal  ScalingReplicaSet  2m22s  deployment-controller  Scaled up replica set nginx-deployment-5754944d6c to 2
    ```
 
-   If you look closely at the *replicas* setting, you will see:
+   For the *replicas* setting, you will see:
     
    ```powershell
    Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
    ```
 
-   The *replicas* setting indicates that your deployment specification required two pods, that those pods where created and updated, and that they are ready for you to use.
+   The *replicas* setting indicates that your deployment specification requires two pods, and that those pods were created and updated and are ready for you to use.
 
    > [!NOTE]
    > A replica set replaces pods that are deleted or terminated for any reason, such as in the case of device node failure or a disruptive device upgrade. For this reason, we recommend that you use a replica set even if your application requires only a single pod.
@@ -216,7 +216,7 @@ Follow these steps to create an nginx deployment:
    kubectl get pods -l app=nginx -n <namespace-string>
    ```
     
-   Here is sample usage of the command and output:
+   A sample use of the command, with output, is shown below:
     
    ```powershell
    PS C:\Users\user> kubectl get pods -l app=nginx -n "test1"
@@ -234,7 +234,7 @@ Follow these steps to create an nginx deployment:
    kubectl describe pod <podname-string> -n <namespace-string>
    ```
 
-   Here is sample usage of the command and output:
+  A sample use of the command, with output, is shown below:
 
    ```powershell
    PS C:\Users\user> kubectl describe pod "nginx-deployment-5754944d6c-7wqjd" -n "test1"
@@ -291,14 +291,14 @@ Follow these steps to create an nginx deployment:
 
 ### Rescale the application deployment by increasing the replica count
 
-Each pod is meant to run a single instance of a given application. If you want to scale your application horizontally to run multiple instances, you can increase the number of pods, one for each instance. In Kubernetes, this is referred to as replication.
+Each pod is meant to run a single instance of a given application. If you want to scale your application horizontally to run multiple instances, you can increase the number of pods to one for each instance. In Kubernetes, this is referred to as replication.
 You can increase the number of pods in your application deployment by applying a new YAML file. The YAML file changes the replicas setting to 4, which increases the number of pods in your deployment to four pods. To increase the number of pods from 2 to 4:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl apply -f https://k8s.io/examples/application/deployment-scale.yaml -n "test1"
 ```
 
-Alternatively, you can save the following markdown on your local machine and substitute the path and filename for the *-f* parameter for `kubectl apply`. For instance, "C:\Kubernetes\deployment-scale.yaml". Here is the configuration for the application deployment scale:
+Alternatively, you can save the following markdown on your local machine and substitute the path and filename for the *-f* parameter for `kubectl apply`. For instance, "C:\Kubernetes\deployment-scale.yaml". The configuration for the application deployment scale would be:
 
 ```markdown
 apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
@@ -328,7 +328,7 @@ To verify that the deployment has four pods:
 kubectl get pods -l app=nginx
 ```
 
-Here is example output for a rescaling deployment from two to four pods:
+Example output for a rescaling deployment from two to four pods is shown below:
 
 ```powershell
 PS C:\WINDOWS\system32> kubectl get pods -l app=nginx
@@ -350,7 +350,7 @@ To delete the deployment, including all the pods, you need to run `kubectl delet
    kubectl delete deployment nginx-deployment -n <namespace-string>
    ```
 
-Here is an example of command usage and output:
+An example of command usage, with output, is shown below:
 
 ```powershell
 PS C:\Users\user> kubectl delete deployment nginx-deployment -n "test1"
